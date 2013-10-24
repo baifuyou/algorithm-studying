@@ -7,17 +7,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct linkedList{
+typedef struct node{
 	int number; //编号
 	int key;
-	struct linkedList *next;
-}linkedList;
+	struct node *next;
+}node;
 
-linkedList *createLinkedList();//创建一个约瑟夫环，返回编号最大的节点
+node *createLinkedList();//创建一个约瑟夫环，返回编号最大的节点
 
 int main(){
-	linkedList *before = createLinkedList();
-	linkedList *now = before->next;
+	node *before = createLinkedList();
+	node *now = before->next;
 	int m,i;
 	printf("please input a m value:\n");
 	scanf("%d", &m);
@@ -38,10 +38,10 @@ int main(){
 	return 0;
 }
 
-linkedList *createLinkedList(){
-	linkedList *circle = (linkedList*)malloc(sizeof(linkedList));
-	linkedList *now = circle;
-	linkedList *waitFree;
+node *createLinkedList(){
+	node *circle = (node*)malloc(sizeof(node));
+	node *now = circle;
+	node *waitFree;
 	int input,i;
 	printf("please input some keys end by 0:\n");
 	for(i = 1; ;i++){
@@ -49,7 +49,7 @@ linkedList *createLinkedList(){
 		if(input == 0)
 		  break;
 		else{
-			now->next = (linkedList*)malloc(sizeof(linkedList));
+			now->next = (node*)malloc(sizeof(node));
 			now = now->next;
 			now->number = i;
 			now->key = input;
