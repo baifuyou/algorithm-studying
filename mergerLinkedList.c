@@ -1,4 +1,5 @@
 //把两个单调不减的链表更并成一个新的单调不减的链表
+//要求在原表空间进行
 #include <stdio.h>
 #include <stdlib.h>
 
