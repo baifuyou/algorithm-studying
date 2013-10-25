@@ -54,6 +54,7 @@ node *merger(node *headA, node *headB){
 node *createLinkedList(){
 	printf("please input numbers that are stoped by 0:(eg:2 3 4 5 0)\n");
 	node *head = (node*)malloc(sizeof(node));
+	node *waitFree;
 	node * now = head;
 	int input;
 	while(1){
@@ -67,7 +68,10 @@ node *createLinkedList(){
 			now->data = input;
 		}
 	}
-	return head->next;
+	waitFree = head;
+	head = head->next;
+	free(waitFree);
+	return head;
 }
 
 void printLinkedList(node *head){
